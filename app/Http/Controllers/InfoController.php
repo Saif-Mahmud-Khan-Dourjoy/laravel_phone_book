@@ -41,12 +41,24 @@ class InfoController extends Controller
       $info->address=$request->address;
       $info->added_by= Auth::user()->id;
       $info->save();
+
+
+    
+
+    
+
+
+    if (count($request->phone) > 0) {
+        foreach ($request->phone as $phone) {
       
       $number= new number;
       $number->number=$phone;
       $number->person_id=$info->id;
 
       $number->save();
+
+        }
+    }
       
       Session::flash('Success','Successfully Added');
       

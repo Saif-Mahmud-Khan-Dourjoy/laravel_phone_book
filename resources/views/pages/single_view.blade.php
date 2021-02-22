@@ -33,8 +33,8 @@
 
     @endforeach
     
-    <a href="{{route('add_new_con',$data->id)}}" class="text-right"> <button class="btn btn-outline-info ">Add New Number</button>  </a>
-  </div>
+    <!-- <a href="{{route('add_new_con',$data->id)}}" class="text-right"> <button class="btn btn-outline-info ">Add New Number</button>  </a>
+  </div> -->
 </div>
 </div>
 
