@@ -8,3 +8,23 @@
         </ul>
     </div>
    @endif
+
+   @if(Session::has('Success'))
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p>
+          {{Session::get('Success')}}
+        </p>
+      </div>
+
+   @endif   
+
+   @if(Session::has('del'))
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p>
+          {{Session::get('del')}}
+        </p>
+      </div>
+
+   @endif

@@ -34,3 +34,16 @@ Route::get('/add_new_con/{id}', 'NumberController@show')->name('add_new_con');
 
 Route::post('/new_con_store/{id}', 'NumberController@store')->name('new_con_store');
 
+//del
+Route::get('/all_del/{id}', 'NumberController@all_del')->name('all_del');
+Route::get('/single_del/{id}', 'NumberController@single_del')->name('single_del');
+
+//update
+
+Route::post('/update_info/{id}', 'InfoController@form_update')->name('form_update');
+Route::post('/number_update/{id}', 'NumberController@number_update')->name('number_update');
+
+//add_new_number
+
+Route::post('/add_new_number/{id}', 'NumberController@add_new_number')->name('add_new_number');
+

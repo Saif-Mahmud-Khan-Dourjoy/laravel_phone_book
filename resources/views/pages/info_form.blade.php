@@ -12,12 +12,13 @@
     <title>Add Info!</title>
   </head>
   <body>
+  @include('pages.nav')
   <h2 class="my-2 text-info font-weight-bold text-center">Add Contact</h2>
-  <div class="container d-flex ">
+  <!-- <div class="container d-flex ">
   <div class="ml-auto">
   <a href="{{route('home')}}" class="btn btn-outline-info"> Go To Home</a>
   </div>
-  </div>
+  </div> -->
 
   <div class="container">
   @include('pages.msg')
@@ -37,7 +38,7 @@
                 <div class="new_field form-group">
                 <p>Phone Number :</p>
                     <div" class="my-3">
-                        <input style="width:95%; display:inline;float:left;" type="text" class="form-control"  name="phone[]"  placeholder="Enter Phone Number" value=""/>
+                        <input style="width:95%; display:inline;float:left;" type="number" class="form-control"  name="phone[]"  placeholder="Enter Phone Number" value=""/>
                         <a href="javascript:void(0);" class="new_button"><i class="fas fa-plus-circle text-info fa-2x"></i></a>
                     </div>
                 </div>

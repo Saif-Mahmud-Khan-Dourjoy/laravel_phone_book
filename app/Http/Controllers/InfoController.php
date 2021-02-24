@@ -22,13 +22,13 @@ class InfoController extends Controller
         $this->validate($request,[
             'name' => 'required|max:150',
             'address' => 'required|max:255',
-            'phone'=>'required|max:20',  
+            'phone.*'=>'required|unique:numbers,number',  
       ],
 
       [
           'name.required'=>'Please Provide a Name',
           'address.required'=>'Please Provide a Address',
-          'phone.required'=>'Please Provide a Phone number',
+         
           
 
       ]);
@@ -49,8 +49,15 @@ class InfoController extends Controller
 
 
     if (count($request->phone) > 0) {
+      $i=0;
         foreach ($request->phone as $phone) {
-      
+
+          $this->validate($request,[
+            'phone.'.$i=>'required|unique:numbers,number',  
+           ]);
+
+           $i++;
+             
       $number= new number;
       $number->number=$phone;
       $number->person_id=$info->id;
@@ -63,5 +70,29 @@ class InfoController extends Controller
       Session::flash('Success','Successfully Added');
       
       return redirect()->route('home');
+    }
+    public function form_update(Request $request, $id){
+      $this->validate($request,[
+        'name' => 'required|max:150',
+        'address' => 'required|max:255',
+      
+
+  ],
+
+  [
+    'name.required'=>'Please Provide a Name',
+    'address.required'=>'Please Provide a Address',
+
+  ]);
+
+  $info =info::find($id);
+
+  $info->name=$request->name;
+  $info->address=$request->address;
+
+  $info->save();
+Session::flash('Success','Successfully Updated');
+
+  return redirect()->back();
     }
 }

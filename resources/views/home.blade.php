@@ -1,19 +1,13 @@
 
 @extends('layouts.app')
 
+@include('pages.nav')
+
 @section('content')
 <div class="container">
-@if(Session::has('Success'))
-      <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <p>
-          {{Session::get('Success')}}
-        </p>
-      </div>
-
-   @endif
+ @include('pages.msg')
     <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-2">
    
 <ul class="list-group">
   <a href="{{route('form_index')}}"><li class="list-group-item">Add New Contact</li></a>
@@ -23,24 +17,13 @@
   
     </div>
     
-        <div class="col-md-8">
+        <div class="col-md-10">
 
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header" style="margin:auto; border:2px solid black; border-radius:5px; font-weight:bold" >{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div>
-                    <p>Welcome</p>
-                    {{ Auth::user()->name }}
-                    </div>
-                    {{ __('You are logged in!') }}
-
-                    <div>
+               
+                
 
                     <table class="table table-striped">
                     <thead>
@@ -82,7 +65,8 @@
                             <td>{{$info->address}}</td>
                             <td>
 
-                                <a class="btn btn-outline-danger" href="{{route('single_view',$info->id)}}" >Single view</a>
+                                <a class="btn btn-outline-info" href="{{route('single_view',$info->id)}}" >Single view</a>
+                                <a class="btn btn-outline-danger" onclick="return confirm('Are you sure?')" href="{{route('all_del',$info->id)}}" >Delete</a>
                             </td> 
                             </tr>
                             @php
@@ -103,10 +87,6 @@
 
                             @endif
 
-                            
-                            
-                           
-                        
                         </tbody>
                         </table>   
                     </div>
